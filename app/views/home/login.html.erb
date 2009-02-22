@@ -1,0 +1,33 @@
+<%= '<font color="red">'+@auth_error+'</font><hr />' if @auth_error %>
+
+<% form_tag(:action => 'login') do %>
+
+  <table>
+    <tr>
+      <td>
+        Login:
+      </td>
+
+      <td>
+        <%= text_field_tag :login, params[:login] %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Password:
+      </td>
+
+      <td>
+        <%= password_field_tag :password, params[:password] %> <!-- check_box_tag :remember %> Remember me-->
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <%= submit_tag "Log in" %>
+      </td>
+    </tr>
+  </table>  
+
+<% end %>

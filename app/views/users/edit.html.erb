@@ -1,0 +1,7 @@
+<h1>Editing user</h1>
+
+<% tagged_form_for @user do |f| %>
+
+  <%= render :partial => "user_editor", :locals => { :f => f, :mode => "edit" } %>
+
+<% end %>

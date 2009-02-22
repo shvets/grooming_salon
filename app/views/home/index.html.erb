@@ -1,0 +1,29 @@
+<%
+  user_name = "Anonymous User"
+  company_name = "Unknown Company"
+
+  current_user = User.current_user(session)
+
+  if current_user != nil
+    user_name = current_user.username
+    company_name = current_user.company.name if current_user.company != nil
+  end
+%>
+
+Hello, <b><%= user_name %></b> from <b><%= company_name %></b>.
+<br><br>
+
+Welcome to <b>Grooming Salon</b> Website!
+<br><br>
+
+<% if current_user == nil %>
+  Please <%= link_to "log in", :controller => "home", :action => "login" %> to have full access to the web site.
+<% else 
+    unless @appointments.empty? %>
+
+     <h1>Today's Appointments</h1>
+
+     <%= render :partial => "today_appointments" %>
+<%  end %>
+<% end %>
+

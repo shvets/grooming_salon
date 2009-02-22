@@ -1,0 +1,37 @@
+<!-- -->
+
+<h1>Listing breeds</h1>
+
+<%= button_to 'New breed', new_breed_path %>
+
+<% options = options_for_select({ "Type" => "TYPE" }, "TYPE") %>
+
+<%= render :partial => "shared/filter", 
+           :locals => { :options => options, :controller => 'breeds'} %>
+
+<% unless @breeds.empty? %>
+  <br />
+
+  <table width='100%'>
+    <tr>
+      <th>Name</th>
+      <th>Subtype</th>
+    </tr>
+    
+    <% for @breed in @breeds %>
+      <tr>
+        <td><%=h @breed.name %></td>
+        <td><%= in_place_select :breed, :subtype, :choices => %w(cat dog).map { |e| [e, e] } %></td>
+        
+        <td><%= link_to 'Show', @breed %></td>
+        <td><%= link_to 'Edit', edit_breed_path(@breed) %></td>
+        <td><%= link_to 'Destroy', @breed, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td><%= will_paginate @breeds %></td>
+    </tr>
+  </table>
+
+<% end %>

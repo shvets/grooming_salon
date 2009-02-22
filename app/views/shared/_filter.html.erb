@@ -1,0 +1,22 @@
+<% form_tag '/' + @controller.controller_name, :method => :get do %>
+
+  Filter by: <%= select_tag "filter_id", options %>
+
+  <%= observe_field("filter_id",
+                 :frequency => 0.25,
+                 :update => :display_filter_field_div,
+                 :before => 'Element.show("spinner")',
+                 :after => 'Element.hide("spinner")',
+                 :url => { :controller => @controller.controller_name, :action => :display_filter_value_field },
+                 :with => 'filter_id') %>
+
+  Value:
+  <div id="display_filter_field_div">
+
+    <%= @controller.display_filter_value_field %>
+
+  </div>
+
+  <%= submit_tag 'Filter' %>
+
+<% end %>

@@ -1,0 +1,149 @@
+<!-- -->
+
+<%= f.error_messages %>
+
+<%
+  if mode == 'new'
+    submit_text = "Create"
+  else
+    submit_text = "Update"
+  end
+
+  current_user = User.current_user(session)
+
+  if current_user.admin
+    conditions = []
+  else
+    conditions = [ "company_id=?", current_user.company_id ]
+  end
+
+  disabled = (params[:pet_owner_id] != nil)
+
+  breeds = Pet.get_breeds @pet.subtype
+%>
+
+<script type="text/javascript">
+  function toggleLayers(subtypeSelectEl) {
+    var cat_el = document.getElementById('display_cat_breeds_select_div'); 
+    var dog_el = document.getElementById('display_dog_breeds_select_div');
+
+    if(subtypeSelectEl.selectedIndex == 0) { // cat
+      dog_el.style.display = 'none'; 
+      cat_el.style.display = '';
+
+      var cat_tf_el = document.getElementById('cat_breed');
+      cat_tf_el.value = "";
+    }
+    else { // dog
+      cat_el.style.display = 'none'; 
+      dog_el.style.display = ''; 
+
+      var dog_tf_el = document.getElementById('dog_breed');
+      dog_tf_el.value = "";
+     }
+   }
+</script>
+
+<table width="100%">
+  <tr>
+    <td>
+      <%= f.collection_select(:pet_owner_id, 
+            PetOwner.find(:all, :order => "last_name", :conditions => conditions ),
+            :id, :name, {}, {:disabled => disabled }) %>
+    </td>
+
+    <td>
+      <%= f.select(:subtype, %w(cat dog), {}, {:onchange => "toggleLayers(this);"}) %>
+    </td>
+
+    <td>
+      <%= f.text_field :name %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.label :breed, {}, {:style => 'color:red'} %>:
+      <div id="display_cat_breeds_select_div"
+        <%= (@pet.subtype == 'cat' || @pet.subtype == nil) ? '' : 'style="display:none"' %>
+      >
+        <%= text_field_with_auto_complete(:cat, :breed, {:value => @pet.breed}, {:autocomplete => "off"}) %>
+      </div>
+     <div id="display_dog_breeds_select_div"
+        <%= (@pet.subtype == 'dog') ? '' : 'style="display:none"' %>
+     >
+        <%= text_field_with_auto_complete(:dog, :breed, {:value => @pet.breed}, {:autocomplete => "off"}) %>
+      </div>      
+    </td>
+
+    <td>
+      <%= f.text_field :size %>
+    </td>
+
+    <td>
+      <%= f.select(:color, Pet::COLORS) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.date_select(:birth_date, :order => [:month, :day, :year])%>
+    </td>
+
+    <td>
+      <%= f.select(:sex, Pet::SEX_TYPES) %>
+    </td>
+
+    <td>
+      <%= f.select(:alive, %w(yes no)) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.text_field :veterinar %>
+    </td>
+
+    <td>
+      <%= f.text_field :referred_by %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <table>
+        <tr>
+          <td><%= f.text_area :medical_problems, "cols" => 25, "rows" => 5 %></td>
+          <td><%= f.text_area :special_instructions, "cols" => 25, "rows" => 5 %></td>
+          <td><%= f.text_area :behavior, "cols" => 25, "rows" => 5 %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <%= f.text_field :clip1 %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <%= f.text_field :clip2 %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+     <%= f.text_field :clip3 %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div>
+        <%= f.submit submit_text %> <%= link_to 'Cancel', pets_path %>
+      </div>
+    </td>
+  </tr>
+</table>

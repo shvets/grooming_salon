@@ -1,0 +1,7 @@
+<h1>New Pet</h1>
+
+<% form_for @pet, :builder => ValidatingFormBuilder do |f| %>
+
+  <%= render :partial => "pet_editor", :locals => { :f => f, :mode => "new" } %>
+
+<% end %>

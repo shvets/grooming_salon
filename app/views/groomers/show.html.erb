@@ -1,0 +1,28 @@
+<p>
+  <b>First Name:</b>
+  <%=h @groomer.first_name %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%=h @groomer.last_name %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%=h @groomer.company.name if @groomer.company != nil %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @groomer.address %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @groomer.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_groomer_path(@groomer) %> |
+<%= link_to 'Back', groomers_path %>

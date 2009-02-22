@@ -1,0 +1,26 @@
+<!-- -->
+  <%
+    if mode == 'new'
+      submit_text = "Create"
+    else
+      submit_text = "Update"
+    end
+    
+# f.label(:name, {}, {:style => 'color:' + (required_field?(:breed, :name) ? 'red' : 'black')})  
+  %>
+
+  <%= f.error_messages %>
+
+  <p>                  
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.select(:subtype, %w(cat dog)) %>
+  </p>
+
+  <p>
+    <div>
+      <%= f.submit submit_text %> <%= link_to 'Cancel', breeds_path %>
+    </div>
+  </p>
+  

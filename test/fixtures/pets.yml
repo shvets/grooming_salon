@@ -1,0 +1,62 @@
+# == Schema Information
+# Schema version: 12
+#
+# Table name: pets
+#
+#  id                   :integer(11)     not null, primary key
+#  subtype              :string(255)     
+#  name                 :string(255)     
+#  sex                  :string(255)     
+#  breed                :string(255)     
+#  color                :string(255)     
+#  size                 :string(255)     
+#  birth_date           :datetime        
+#  veterinar            :string(255)     
+#  referred_by          :string(255)     
+#  medical_problems     :text            
+#  special_instructions :text            
+#  behavior             :text            
+#  clip1                :string(255)     
+#  clip2                :string(255)     
+#  clip3                :string(255)     
+#  pet_owner_id         :integer(11)     
+#  alive                :string(255)     
+#  created_at           :datetime        
+#  updated_at           :datetime        
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  veterinar: MyString
+  referred_by: MyString
+  medical_problems: MyText
+  breed: MyString
+  size: MyString
+  name: MyString
+  sex: MyString
+  color: MyString
+  birth_date: 2008-07-22 20:03:20
+  clip1: MyString
+  clip2: MyString
+  clip3: MyString
+  special_instructions: MyText
+  behavior: MyText
+  pet_owner: MyString
+
+two:
+  veterinar: MyString
+  referred_by: MyString
+  medical_problems: MyText
+  breed: MyString
+  size: MyString
+  name: MyString
+  sex: MyString
+  color: MyString
+  birth_date: 2008-07-22 20:03:20
+  clip1: MyString
+  clip2: MyString
+  clip3: MyString
+  special_instructions: MyText
+  behavior: MyText
+  pet_owner: MyString

@@ -1,0 +1,37 @@
+  <%= f.error_messages %>
+
+  <%
+    if mode == 'new'
+      submit_text = "Create"
+    else
+      submit_text = "Update"
+    end
+  %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :table %><br />
+    <%= f.text_field :table %>
+  </p>
+  <p>
+    <%= f.label :condition %><br />
+    <%= f.text_field :condition %>
+  </p>
+
+  <p>
+    <%= f.label controller %><br />
+    <%= f.text_field :controller %>
+  </p>
+  
+  <p>
+    <div>
+      <%= f.submit submit_text %> <%= link_to 'Cancel', reports_path %>
+    </div>
+  </p>

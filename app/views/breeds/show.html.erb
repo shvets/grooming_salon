@@ -1,0 +1,12 @@
+<p>
+  <b>Name:</b>
+  <%=h @breed.name %>
+</p>
+
+<p>
+  <b>Subtype:</b>
+  <%=h @breed.subtype %>
+</p>
+
+<%= link_to 'Edit', edit_breed_path(@breed) %> |
+<%= link_to 'Back', breeds_path %>

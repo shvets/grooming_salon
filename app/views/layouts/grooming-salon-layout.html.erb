@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  
+  <head>
+    <title>Grooming Salon</title>
+    
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    
+    <!--script type="text/javascript" src="/javascripts/prototype.js"></script-->
+  <!--script type="text/javascript" src="/javascripts/effects.js"></script-->
+
+  <%= stylesheet_link_tag "grooming-salon" %>
+  <%= stylesheet_link_tag "in_place_styles" %>
+
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "scriptaculous" %>
+
+  </head>
+  
+  <body id="salon">
+    
+    <div id="page">
+      <div id="header"><%= image_tag 'loading.gif', :id=>'spinner', :style=>"display:none; float:left;" %>Grooming Salon</div>
+      
+      <div id="content">
+        <table>
+          <tr>
+            <td>
+              <div id="inplace_error_div"></div>
+
+              <% if flash[:notice] %>
+                <div id="notice">
+                  <%= flash[:notice] %>
+                </div>
+              <% elsif flash[:error] %>
+                <div id="error">
+                  <%= flash[:error] %>
+                </div>
+              <% else %>
+                <%= "&nbsp;" %>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <%= @content_for_layout %>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      
+      <div id="sidebar">
+        <br>
+        
+        <ul>
+          <li id="menu" class="bg6">
+            <ul>
+              <li class="first">
+                <%= link_to "Home", :controller => "home", :action => "index" %>
+                
+                <% 
+                  current_user = User.current_user(session)
+
+                  if current_user == nil %>
+                  / <%= link_to "Login", :controller => "home", :action => "login" %>
+                <% else %>
+                  / <%= link_to "Logout", :controller => "home", :action => "logout" %>
+                <% end %>
+              </li>
+              
+              <% if current_user != nil %>
+                <% if current_user.admin %>
+                  <li><%= link_to "Companies", :controller => "companies", :action => "index" %></li>
+                <% else %>
+                  <li><%= current_user.company.name if current_user.company != nil %></li>
+                <% end %>
+              
+                <% if current_user.admin %>
+                  <li><%= link_to "Breeds", :controller => "breeds", :action => "index" %></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Users", :controller => "users", :action => "index" %></li>
+                <% end %>
+              <% end %>
+              
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Groomers", :controller => "groomers", :action => "index" %></li>
+              <li><%= link_to "Pet Owners", :controller => "pet_owners", :action => "index" %></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Pets", :controller => "pets", :action => "index" %></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Appointments", :controller => "appointments", :action => "index" %></li>
+              <li><%= link_to "Reports", :controller => "reports", :action => "index" %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="footer">
+        <table width="100%">
+          <tr align="center">
+            <td>
+              <%= javascript_include_tag 'prototype' %>
+              
+              <% if ENV['RAILS_ENV'] == 'development' %>
+                <div id="debug" style="margin: 40px 5px 5px 5px;">
+                  <a href="#" onclick="Element.toggle('debug_info');return false" style="text-decoration: none; color: #ccc;">Show Debug Info &#10162;</a>
+                
+                  <div id="debug_info" style="display : none;">
+                    <%= debug session %>
+                    <%= debug params %>
+                  </div>
+                </div>
+              <% end %>
+              
+              Copyright &copy; 2008 Dream Programs Inc.
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  
+</html>

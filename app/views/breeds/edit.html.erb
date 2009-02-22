@@ -1,0 +1,7 @@
+<h1>Edit Breed</h1>
+
+<% form_for @breed, :builder => ValidatingFormBuilder do |f| %>
+
+  <%= render :partial => "breed_editor", :locals => { :f => f, :mode => "edit" } %>
+
+<% end %>

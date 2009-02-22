@@ -1,0 +1,37 @@
+Dataset
+=======
+
+Rake tasks to manage large databases.
+
+
+Docs
+=======
+$ rake -D dataset
+rake db:dataset:clobber
+    Cleans up all dataset information in db/dataset. Specify DATASET=x and the entire db/dataset/x directory will be deleted.
+
+rake db:dataset:dump
+    Dump a SQL dataset from the current environment's database into db/dataset/dataset.sql. Specify DATASET=x to use db/dataset/x/dataset.sql instead.
+
+rake db:dataset:dump_fixtures
+    Dump a dataset from the current environment's database into db/dataset. Specify DATASET=x to use db/dataset/x instead. Specify INCLUDE=Model1,Model2,Model3 to dump only certain model classes
+
+rake db:dataset:load
+    Load a SQL dataset into the current environment's database from db/dataset. Specify DATASET=x to use db/dataset/x instead.
+
+rake db:dataset:load_fixtures
+    Load a dataset into the current environment's database from db/dataset. Specify DATASET=x to use db/dataset/x instead.
+
+rake db:dataset:migrate
+    Migrate a SQL dataset to the latest schema version.  You may specify a DATASET environment variable. This task always executes in the 'test' environment.
+
+
+Notes
+=======
+Currently dump only works for mysql.
+The dump task shells out to mysqldump, so you must have that executable in your path.
+The dump task does not provide host to the mysqldump executable.
+
+
+Copyright (c) 2008 LogicLeaf, released under the MIT license
+    

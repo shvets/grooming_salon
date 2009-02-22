@@ -1,0 +1,35 @@
+# == Schema Information
+# Schema version: 12
+#
+# Table name: users
+#
+#  id            :integer(11)     not null, primary key
+#  username      :string(255)     
+#  admin         :boolean(1)      
+#  password_salt :string(255)     
+#  password_hash :string(255)     
+#  email         :string(255)     
+#  cookie_hash   :string(255)     
+#  company_id    :integer(11)     
+#  created_at    :datetime        
+#  updated_at    :datetime        
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+<% 
+  salt = User.calculate_salt unless defined? salt
+  pw = "secret"
+%>
+
+one:
+  username: MyString
+  admin: false
+  company_id: 1
+  password_salt: <%= salt %>
+  password_hash: <%= User.encrypted_password(pw, salt) %>
+
+two:
+  username: MyString
+  admin: false
+  company_id: 1
