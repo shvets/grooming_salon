@@ -1,0 +1,8 @@
+<h1>Edit Report</h1>
+
+<% form_for(@report) do |f| %>
+
+  <%= render :partial => "report_editor", :locals => { :f => f, :mode => "edit" } %>
+
+<% end %>
+

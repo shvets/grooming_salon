@@ -1,0 +1,7 @@
+<h1>Edit Company</h1>
+
+<% form_for @company, :builder => ValidatingFormBuilder do |f| %>
+
+  <%= render :partial => "company_editor", :locals => { :f => f, :mode => "edit" } %>
+
+<% end %>

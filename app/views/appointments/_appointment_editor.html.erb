@@ -1,0 +1,90 @@
+<!-- -->
+ 
+  <%= f.error_messages %>
+
+  <%
+    if mode == 'new'
+      submit_text = "Create"
+    else
+      submit_text = "Update"
+    end
+
+    current_user = User.current_user(session)
+
+    if current_user.admin
+      if  params[:pet_id] != nil
+        disabled = true
+      else
+        disabled = false
+      end
+    else 
+      if mode == 'edit' || params[:pet_id] != nil
+        disabled = true
+      else
+        disabled = false
+      end
+    end
+
+    if current_user.admin
+      conditions = []
+    else
+      conditions = [ "company_id=?", current_user.company_id ]
+    end
+
+    if params[:pet_id] != nil
+      pets = Pet.find(:all, :order => "name", :conditions => [ "id = ?", params[:pet_id] ] )
+    else
+      if params[:pet_owner_id] == nil
+        pets = Pet.find(:all, :conditions => [ "id = ?", @appointment.pet_id ])
+      else
+        pets = Pet.find(:all)
+      end
+    end
+  %>
+
+  <% if disabled %>
+    <%= f.hidden_field :pet_id %>
+    <%= f.hidden_field :pet_owner_id %>
+  <% end %>
+
+  <p>
+    <%= f.collection_select(:pet_owner_id, 
+          PetOwner.find(:all, :order => "last_name", :conditions => conditions), :id, :name, {:include_blank => true}, {:disabled => disabled }) %>
+
+    <%= observe_field("appointment_pet_owner_id",
+                   :frequency => 0.25,
+                   :update => :display_pets_select_div,
+                   :url => { :controller => 'appointments', :action => :display_pets_select},
+                   :with => 'pet_owner_id') %>
+  </p>
+       
+  <p>
+    <div id="display_pets_select_div">
+      <%= f.collection_select(:pet_id, pets, :id, :name, {}, {:disabled => disabled}) %>
+    </div>
+  </p>
+
+  <p>
+    <%= f.collection_select(:groomer_id, 
+          Groomer.find(:all, :order => "last_name", :conditions => conditions ), :id, :name) %>
+  </p>
+
+  <p>
+    <%= f.date_select :appointment_date %>
+  </p>
+
+  <p>
+    <%= f.time_select :appointment_time %>
+  </p>
+
+  <p>
+    <%= f.text_field :price %>
+  </p>
+
+  <p>
+    <div>
+      <%= f.submit submit_text %> <%= link_to 'Cancel', appointments_path %>
+    </div>
+  </p>
+
+

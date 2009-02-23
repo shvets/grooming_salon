@@ -1,0 +1,7 @@
+<h1>Edit Appointment</h1>
+
+<% form_for @appointment, :builder => ValidatingFormBuilder  do |f| %>
+
+  <%= render :partial => "appointment_editor", :locals => { :f => f, :mode => "edit" } %>
+
+<% end %>

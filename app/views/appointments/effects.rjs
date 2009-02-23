@@ -1,0 +1,9 @@
+#page.replace_html("effects_div", :partial => "effects", :object => @cart)
+
+#START_HIGHLIGHT                         
+page[:effects_div].visual_effect :blind_down if true
+#END_HIGHLIGHT
+
+#page[:current_item].visual_effect :highlight, 
+#                                  :startcolor => "#88ff88",
+#                                  :endcolor => "#114411"

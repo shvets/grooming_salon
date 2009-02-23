@@ -1,0 +1,34 @@
+# == Schema Information
+# Schema version: 12
+#
+# Table name: pet_owners
+#
+#  id         :integer(11)     not null, primary key
+#  first_name :string(255)     
+#  last_name  :string(255)     
+#  home_phone :string(255)     
+#  work_phone :string(255)     
+#  cell_phone :string(255)     
+#  salutation :string(255)     
+#  company_id :integer(11)     
+#  created_at :datetime        
+#  updated_at :datetime        
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  salutation: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  salutation: MyString

@@ -1,0 +1,46 @@
+  <%= f.error_messages %>
+
+  <%
+    if mode == 'new'
+      submit_text = "Create"
+    else
+      submit_text = "Update"
+    end
+
+    if User.current_user(session).admin
+      disabled = false
+    else
+      disabled = true
+    end
+  %>
+
+  <% if disabled %>
+    <%= f.hidden_field :company_id %>
+  <% end %>
+
+  <p>
+    <%= f.collection_select(:company_id, Company.find(:all, :order => "name"), :id, :name, {}, {:disabled => disabled }) %>
+  </p>
+
+  <p>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+
+  <p>
+    <%= f.text_field :address %>
+  </p>
+  
+  <p>
+    <%= f.text_area :notes, :rows => 5 %>
+  </p>
+
+  <p>
+    <div>
+      <%= f.submit submit_text %> <%= link_to 'Cancel', groomers_path %>
+    </div>
+  </p>

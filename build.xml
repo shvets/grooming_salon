@@ -1,0 +1,65 @@
+<project name="build" default="menu" basedir=".">
+  <target name="test">
+    <echo message="hello"/>
+   </target>
+
+  <target name="menu">
+    <script language="beanshell">
+      Map map = new TreeMap();
+
+      Hashtable targets = project.getTargets();
+      String defaultTarget = project.getDefaultTarget();
+
+      Enumeration e = targets.keys();
+      
+      for(i=1; e.hasMoreElements();) {
+        String target = e.nextElement();
+        
+        if(!target.equalsIgnoreCase(defaultTarget) &amp;&amp; target.trim().length() > 0) {
+          map.put(new Integer(i++).toString(), target);
+        }
+      }
+ 
+      Iterator iterator = map.keySet().iterator();
+
+      while(iterator.hasNext()) {
+        String id = iterator.next();
+
+        print(id + ". " + map.get(id));
+      }
+
+      project.addReference("available.targets", map);
+    </script>
+
+    <input addproperty="menuSelection" message="Select target by number: "/>
+
+
+    <script language="beanshell">
+      Map map = project.getReference("available.targets");      
+
+      String target = map.get(project.getProperty("menuSelection"));
+
+      project.executeTarget(target);
+    </script>
+   </target>
+
+  <target name="db.init">
+    <exec executable="jrake.bat">
+      <arg value="db:drop"/>
+    </exec>
+
+    <exec executable="jrake.bat">
+      <arg value="db:create"/>
+    </exec>
+
+    <exec executable="jrake.bat">
+      <arg value="db:migrate"/>
+    </exec>
+   </target>
+
+   <target name="server">
+    <exec executable="jruby.bat">
+      <arg value="script/server"/>
+    </exec>
+   </target>
+</project>

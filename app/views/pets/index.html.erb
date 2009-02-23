@@ -1,0 +1,53 @@
+<h1>Listing Pets</h1>
+
+<%= button_to 'New Pet', new_pet_path %>
+
+<% unless @pets.empty? %>
+  <br />
+
+  <table border="0">
+    <tr>
+      <th>Pet Owner</th>
+      <th>Cat or Dog?</th>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Size</th>
+      <th>Sex</th>
+      <th>Color</th>
+      <th>Birth Date</th>
+      <th>File name</th>
+      <th colspan="5">Commands</th>
+    </tr>
+
+    <% for pet in @pets %>
+      <tr <%= "style='color:red'" if pet.alive == 'no' %>  valign="topN class="<%=cycle('list-line-odd', 'list-line-even')%>">
+        <td><%=h pet.pet_owner.name if pet.pet_owner != nil %></td>
+        <td><%=h pet.subtype%></td>
+        <td>
+          <% if pet.pet_image != nil %>
+            <%= '<img src="data/pet_images/1/' + pet.pet_image.filename.to_s + '"  width=50 height=50/>' %>
+          <% end %>
+
+          <%=h pet.name %>
+        </td>
+        <td><%=h pet.breed %></td>
+        <td><%=h pet.size %></td>
+        <td><%=h pet.sex %></td>
+        <td><%=h pet.color %></td>
+        <td><%=h pet.birth_date %></td>
+        <td>
+        </td>
+
+        <td><%= link_to 'Upload Image', :controller => 'pet_images', :action => 'index', :parent_id => pet.id %></td>
+        
+        <td><%= link_to 'Show', pet %></td>
+        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Delete', pet, :confirm => 'Are you sure?', :method => :delete %></td>
+
+        <td><%= link_to_if pet.appointments.size > 0, 'Appointments', :controller => "appointments", :action => "index", :pet_id => pet.id, :pet_owner_id => pet.pet_owner.id %></td>
+        <td><%= link_to_if pet.pet_owner != nil, 'New Appointment', :controller => "appointments", :action => "new", :pet_id => pet.id, :pet_owner_id => pet.pet_owner.id  %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+

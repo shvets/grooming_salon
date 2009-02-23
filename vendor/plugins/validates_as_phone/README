@@ -1,0 +1,16 @@
+ValidatesAsPhone
+================
+
+Validates a US telephone number with or without area code, and without regard to the different input formats. ( e.g. (xxx)xxx-xxxx or xxx.xxx.xxxx or xxx-xxx-xxxx )
+
+Usage:
+
+class Model < ActiveRecord::Base
+  ...
+  validates_as_phone :telephone, :fax,
+                      :message => "is not a valid US phone number"
+  ...
+end
+
+========================
+Bug reports and feedback are always welcome. Please send them to jerrod@indierockmedia.com 

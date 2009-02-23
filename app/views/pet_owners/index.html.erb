@@ -1,0 +1,36 @@
+<h1>Listing Pet Owners</h1>
+
+<%= button_to 'New Pet Owner', new_pet_owner_path %>
+<br/>
+
+<% unless @pet_owners.empty? %>
+  <table border="0" width="80%">
+    <tr>
+      <th>Company</th>
+      <th>Name</th>
+      <th>Home Phone</th>
+      <th>Work Phone</th>
+      <th>Cell Phone</th>
+      <th colspan="5">Commands</th>
+    </tr>
+
+    <% for pet_owner in @pet_owners %>
+      <tr valign="top" class="<%=cycle('list-line-odd', 'list-line-even')%>">
+        <td><%=h pet_owner.company.name if pet_owner.company != nil %></td>
+        <td><%=h pet_owner.salutation %> <%=h pet_owner.name %></td>
+        <td><%=h pet_owner.home_phone %></td>
+        <td><%=h pet_owner.work_phone %></td>
+        <td><%=h pet_owner.cell_phone %></td>
+        <td><%= link_to 'Show', pet_owner %></td>
+
+        <td><%= link_to 'Edit', edit_pet_owner_path(pet_owner) %></td>
+
+        <td><%= link_to 'Delete', pet_owner, :confirm => 'Are you sure?', :method => :delete %></td>
+
+        <td><%= link_to_if pet_owner.pets.size > 0, 'Pets', :controller => "pets", :action => "index", :pet_owner_id => pet_owner.id %></td>
+
+        <td><%= link_to 'New&nbsp;Pet', :controller => "pets", :action => "new", :pet_owner_id => pet_owner.id %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

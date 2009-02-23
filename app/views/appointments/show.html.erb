@@ -1,0 +1,32 @@
+<p>
+  <b>Pet Owner:</b>
+  <%=h @appointment.pet.pet_owner.name %>
+</p>
+
+<p>
+  <b>Pet:</b>
+  <%=h @appointment.pet.name %>
+</p>
+
+<p>
+  <b>Groomer:</b>
+  <%=h @appointment.groomer.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @appointment.appointment_date %>
+</p>
+
+<p>
+  <b>TimeDate:</b>
+  <%=h @appointment.appointment_time %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @appointment.price %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

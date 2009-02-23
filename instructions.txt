@@ -1,0 +1,168 @@
+Links: 
+
+http://www.jonathansng.com/ruby-on-rails/ruby-on-rails-tutorial-now-with-more-202
+http://www.jonathansng.com/ruby-on-rails/basic-rails-routing-and-a-journey-into-views-and-controllers/
+http://www.jonathansng.com/technology/restful-design-and-the-http-request/
+http://www.jonathansng.com/ruby-on-rails/rails-relationships/
+http://www.jonathansng.com/ruby-on-rails/basic-http-authentication-and-partials/
+
+http://www.tutorialspoint.com/ruby-on-rails/index.htm
+http://www.sitepoint.com/article/learn-ruby-on-rails
+http://www.meshplex.org/wiki/Ruby/Ruby_on_Rails_programming_tutorials
+
+http://stdlib.rubyonrails.org/
+http://api.rubyonrails.org/
+http://www.ruby-doc.org/docs/ProgrammingRuby/
+
+http://codingbitch.com/p/comboy/User+authentication+in+Ruby+on+Rails
+http://pleac.sourceforge.net/pleac_ruby/index.html
+
+http://video.google.com/videoplay?docid=-6700435476213800355
+http://blog.taragana.com/index.php/archive/6-ruby-on-rails-video-tutorials/
+
+http://www.peabrane.com/tags/ruby
+
+1.  (2.1.0)
+
+jgem install rails --include-dependencies --no-rdoc --no-ri
+jgem install jruby-openssl --no-rdoc --no-ri
+jgem update --system
+jruby --version
+jgem --version
+jrails --version
+
+2.
+
+jrails --database mysql GroomingSalon
+
+3.
+cd GroomingSalon
+
+4.
+
+start jruby script/server
+
+5.
+jruby script/generate controller home
+jruby script/generate controller reportEngines
+
+6. 
+
+jruby script\generate scaffold Company name:string address:string
+jruby script\generate scaffold Groomer first_name:string last_name:string notes:text
+
+jruby script\generate scaffold Pet veterinar:string referred_by:string medical_problems:text breed:string size:string name:string sex:string color:string birth_date:datetime clip1:string clip2:string clip3:string special_instructions:text behavior:text
+jruby script\generate scaffold PetOwner first_name:string last_name:string home_phone:string work_phone:string cell_phone:string salutation:string
+jruby script\generate scaffold Appointment appointment_date:datetime price:string
+jruby script\generate scaffold Report name:string description:string table:string condition:string
+jruby script\generate scaffold User name:string password:string admin:boolean company_id:integer
+jruby script\generate scaffold Breed name:string subtype:string
+
+
+7.
+
+set RAILS_ENV=production
+set RAILS_ENV=test
+set RAILS_ENV=development
+
+jrake db:drop:all 
+jrake db:create:all 
+jrake db:migrate 
+jrake test
+ rake db:test:prepare   
+
+jrake db:version
+
+
+8. Open your browser to 
+
+http://localhost:3000/cats
+
+jruby script/generate migration add_pet_owner_id_to_pets
+
+9.
+jruby script/console
+
+10.
+rake db:test:prepare   
+script/generate migration AddTitleEmailToUsers title:string email:string
+
+rake rails:freeze:gems
+rake doc:rails
+
+rake cleanup - remover previous versions of gems
+rake rails:update
+
+11.
+rake db:sessions:create
+rake migrate
+db:sessions:clear
+
+rake db:test:prepare
+
+12.
+autocomplete:
+jruby script/plugin install auto_complete
+script/plugin install http://svn.rubyonrails.org/rails/plugins/auto_complete
+
+annotate:
+ruby script/plugin install http://repo.pragprog.com/svn/Public/plugins/annotate_models
+rake annotate_models
+
+filtered list:
+ruby ./script/plugin install svn://rubyforge.org/var/svn/filtered-list/trunk
+
+
+13.
+http://github.com/pelargir/finder_filter/
+
+gem sources -a http://gems.github.com
+gem install pelargir-finder_filter
+
+gem install http://github.com/mislav/will_paginate/tree/master
+
+git submodule add git://github.com/thorny-sun/prawnto.git vendor/plugins/prawnto
+
+14.
+
+> script/plugin source http://svn.techno-weenie.net/projects/plugins
+> script/plugin install acts_as_attachment
+> rake test_plugins PLUGIN=acts_as_attachment
+
+> script/generate attachment_model pet_image
+
+http://rubyforge.org/frs/download.php/38052/RMagick-2.5.0-ImageMagick-6.4.1-5-Q8.zip
+gem install rmagick-2.5.0-x86-mswin32.gem
+
+ruby script/plugin install http://sean.treadway.info/svn/plugins/responds_to_parent
+
+ruby script/plugin install http://validates-as-phone.googlecode.com/svn/trunk
+
+ruby script/plugin install http://svn.rubyonrails.org/rails/plugins/in_place_editing
+
+ruby script/plugin install http://super-inplace-controls.googlecode.com/svn/trunk/super_inplace_controls
+
+ruby script/plugin install svn://rubyforge.org//var/svn/valirefl/validation_reflection/trunk
+
+svn://code.logicleaf.com/rails-plugins/dataset
+ruby script/plugin install svn://rubyforge.org/var/svn/geokit/trunk
+
+15.
+
+jruby -S gem install activerecord-jdbcderby-adapter
+
+16.
+rake db:dataset:dump_fixtures DATASET=demo
+rake db:dataset:load_fixtures DATASET=demo
+
+17.
+gem install capistrano
+cap -f morph_deploy_no_svn.rb morph:deploy
+
+18.
+http://www.kuripai.com/posts/introduction_to_acts_as_solr
+ruby script/plugin install git://github.com/look/acts_as_solr.git
+
+19.
+gem sources -a http://gems.github.com
+gem install up_the_irons-immutable

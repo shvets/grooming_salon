@@ -1,0 +1,23 @@
+  <%= f.error_messages %>
+
+  <%
+    if mode == 'new'
+      submit_text = "Create"
+    else
+      submit_text = "Update"
+    end
+  %>
+
+  <p>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <div>
+      <%= f.submit submit_text %> <%= link_to 'Cancel', companies_path %>
+    </div>
+  </p>

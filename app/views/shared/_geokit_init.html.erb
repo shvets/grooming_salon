@@ -1,0 +1,78 @@
+<script type="text/javascript"
+        src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<%= GeoKit::Geocoders::google %>" >
+</script>
+
+<%
+  coordinates = list.collect do | item |
+    coordinate_struct = Struct::new(:name, :address, :lat, :lng)
+    
+    location = GeoKit::Geocoders::GoogleGeocoder.geocode(item.address)
+
+    coordinate_struct.new(item.name, item.address, location.lat, location.lng) if location.success
+  end
+%>
+
+<script type="text/javascript">
+  var coordinates = <%= coordinates.to_json %>;
+
+  var initialized = false;
+  
+  function load() { 
+    var el = document.getElementById('<%= map_div %>');
+    
+    if(initialized || el.style.display == 'none') {
+      return;
+    }
+    
+    if (GBrowserIsCompatible() && typeof coordinates != 'undefined') {
+      var map = new GMap2(document.getElementById('<%= map_div %>'));
+      
+      map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+      map.addControl(new GLargeMapControl());
+
+      // Clicking the marker will hide it
+      function createMarker(latlng, coordinate) {
+        var marker = new GMarker(latlng);
+        var html="<strong>" + coordinate[0] + "</strong><br />" + coordinate[1];
+        
+        GEvent.addListener(marker, "click", function() {
+          map.openInfoWindowHtml(latlng, html);
+        });
+        return marker;
+      }
+
+      var bounds = new GLatLngBounds;
+      
+      for (var i = 0; i < coordinates.length; i++) {
+        if(coordinates[i] != null) {
+          var latlng = new GLatLng(coordinates[i][2], coordinates[i][3])
+
+          bounds.extend(latlng);
+          
+          map.addOverlay(createMarker(latlng, coordinates[i]));
+        }
+      }
+      
+      map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+      
+      initialized = true;
+    }
+  }  
+
+  function toggleMapVisibility() {
+    var el = document.getElementById('<%= map_div %>');
+    
+    if(el.style.display == '') {
+      el.style.display = 'none';
+    }
+    else {
+      el.style.display = '';
+    }
+    
+    //alert(el.style.display);
+  
+  }
+
+  window.onload=load;
+  window.onunload=GUnload;  
+</script>

@@ -1,0 +1,22 @@
+# http://www.ibm.com/developerworks/opensource/library/os-ad-prototype-jruby/index.html?ca=drs-
+
+development:
+  adapter: jdbc
+  driver: org.apache.derby.jdbc.ClientDriver
+  url: jdbc:derby://localhost/deadly_development;create=true
+  username: app
+  password: app
+  
+test:
+  adapter: jdbc
+  driver: org.apache.derby.jdbc.ClientDriver
+  url: jdbc:derby://localhost/deadly_test;create=true
+  username: app
+  password: app
+  
+production:
+  adapter: jdbc
+  driver: org.apache.derby.jdbc.ClientDriver
+  url: jdbc:derby://localhost/deadly_production;create=true
+  username: app
+  password: app

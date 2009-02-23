@@ -1,0 +1,85 @@
+
+<p>
+  <b>Cat or Dog?:</b>
+  <%=h @pet.subtype %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @pet.name %>
+</p>
+
+<p>                     
+  <b>Breed:</b>
+  <%=h @pet.breed %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%=h @pet.sex %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%=h @pet.size %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%=h @pet.color %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%=h @pet.birth_date %>
+</p>
+
+<p>
+  <b>Pet Owner:</b>
+  <%=h @pet.pet_owner.name %>
+</p>
+
+<p>
+  <b>Veterinar:</b>
+  <%=h @pet.veterinar %>
+</p>
+
+<p>
+  <b>Referred by:</b>
+  <%=h @pet.referred_by %>
+</p>
+
+<p>
+  <b>Medical problems:</b>
+  <%=h @pet.medical_problems %>
+</p>
+
+<p>
+  <b>Special Instructions:</b>
+  <%=h @pet.special_instructions %>
+</p>
+
+<p>
+  <b>Behavior:</b>
+  <%=h @pet.behavior %>
+</p>
+
+<p>
+  <b>Clip1:</b>
+  <%=h @pet.clip1 %>
+</p>
+
+<p>
+  <b>Clip2:</b>
+  <%=h @pet.clip2 %>
+</p>
+
+<p>
+  <b>Clip3:</b>
+  <%=h @pet.clip3 %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>
