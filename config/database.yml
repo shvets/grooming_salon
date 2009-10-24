@@ -17,7 +17,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: GroomingSalon_development
+  database: grooming_salon_development
   username: root
   password:
   host: localhost
@@ -28,7 +28,7 @@ development:
 test:
   adapter: mysql
   encoding: utf8
-  database: GroomingSalon_test
+  database: grooming_salon_test
   username: root
   password:
   host: localhost
@@ -36,7 +36,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: GroomingSalon_production
+  database: grooming_salon_production
   username: root
-  password: 
+  password:
   host: localhost
