@@ -15,6 +15,8 @@
 #  updated_at    :datetime        
 #
 
+require 'digest/md5'
+
 class ActiveRecord::Base
   def self.encrypt(*attr_names)
     encrypter = Encrypter.new(attr_names)
