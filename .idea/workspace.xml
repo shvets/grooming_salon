@@ -36,7 +36,7 @@
       <file leaf-file-name="geokit_config.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/initializers/geokit_config.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="86" selection-start="169" selection-end="169" vertical-scroll-proportion="0.110535406">
+            <state line="29" column="74" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.3316062">
               <folding />
             </state>
           </provider>
@@ -326,7 +326,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/geokit_config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="86" selection-start="169" selection-end="169" vertical-scroll-proportion="0.110535406">
+        <state line="29" column="74" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.3316062">
           <folding />
         </state>
       </provider>
