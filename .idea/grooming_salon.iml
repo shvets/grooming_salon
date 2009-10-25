@@ -12,6 +12,12 @@
   <component name="GemRequirementsHolder" version="2">
     <requirement>
       <requirement>
+        <dependency name="mysql" version="0" bound="GREATER_OR_EQUAL" />
+      </requirement>
+      <source from="config/database.yml" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="actionpack" version="0" bound="GREATER_OR_EQUAL" />
       </requirement>
       <source from="vendor/plugins/will_paginate/test/boot.rb" />
@@ -28,12 +34,6 @@
       </requirement>
       <source from="vendor/plugins/will_paginate/test/boot.rb" />
       <source from="config/boot.rb" />
-    </requirement>
-    <requirement>
-      <requirement>
-        <dependency name="mysql" version="0" bound="GREATER_OR_EQUAL" />
-      </requirement>
-      <source from="config/database.yml" />
     </requirement>
   </component>
   <component name="NewModuleRootManager">
