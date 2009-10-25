@@ -1,3 +1,2 @@
 geokit --version '>= 1.5.0'
 will_paginate --version '>= 2.3.11' --source 'http://gemcutter.org'
-annotate_models --version '>= 1.0.4'

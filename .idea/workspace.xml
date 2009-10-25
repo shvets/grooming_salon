@@ -24,10 +24,10 @@
   <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="instructions.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="instructions.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/instructions.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="62" selection-start="2245" selection-end="2245" vertical-scroll-proportion="-1.1560284">
+            <state line="163" column="66" selection-start="4725" selection-end="4729" vertical-scroll-proportion="-27.0">
               <folding />
             </state>
           </provider>
@@ -42,10 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gems" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name=".gems" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gems">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="36" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+            <state line="2" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.03607666">
               <folding />
             </state>
           </provider>
@@ -62,8 +62,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/config/initializers/geokit_config.rb" />
-        <option value="$PROJECT_DIR$/.gems" />
         <option value="$PROJECT_DIR$/instructions.txt" />
+        <option value="$PROJECT_DIR$/.gems" />
       </list>
     </option>
   </component>
@@ -349,16 +349,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gems">
+    <entry file="file://$PROJECT_DIR$/instructions.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="36" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+        <state line="163" column="66" selection-start="4725" selection-end="4729" vertical-scroll-proportion="-27.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/instructions.txt">
+    <entry file="file://$PROJECT_DIR$/.gems">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="62" selection-start="2245" selection-end="2245" vertical-scroll-proportion="-1.1560284">
+        <state line="2" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.03607666">
           <folding />
         </state>
       </provider>
