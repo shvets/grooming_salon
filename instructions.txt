@@ -24,40 +24,39 @@ http://www.peabrane.com/tags/ruby
 
 1.  (2.1.0)
 
-jgem install rails --include-dependencies --no-rdoc --no-ri
-jgem install jruby-openssl --no-rdoc --no-ri
-jgem update --system
-jruby --version
-jgem --version
-jrails --version
+gem install rails --include-dependencies --no-rdoc --no-ri
+gem install jruby-openssl --no-rdoc --no-ri
+gem update --system
+ruby --version
+gem --version
+rails --version
 
 2.
 
-jrails --database mysql GroomingSalon
+rails --database mysql grooming_salon
 
 3.
-cd GroomingSalon
+cd grooming_salon
 
 4.
 
-start jruby script/server
+start ruby script/server
 
 5.
-jruby script/generate controller home
-jruby script/generate controller reportEngines
+ruby script/generate controller home
+ruby script/generate controller reportEngines
 
 6. 
 
-jruby script\generate scaffold Company name:string address:string
-jruby script\generate scaffold Groomer first_name:string last_name:string notes:text
+ruby script\generate scaffold Company name:string address:string
+ruby script\generate scaffold Groomer first_name:string last_name:string notes:text
 
-jruby script\generate scaffold Pet veterinar:string referred_by:string medical_problems:text breed:string size:string name:string sex:string color:string birth_date:datetime clip1:string clip2:string clip3:string special_instructions:text behavior:text
-jruby script\generate scaffold PetOwner first_name:string last_name:string home_phone:string work_phone:string cell_phone:string salutation:string
-jruby script\generate scaffold Appointment appointment_date:datetime price:string
-jruby script\generate scaffold Report name:string description:string table:string condition:string
-jruby script\generate scaffold User name:string password:string admin:boolean company_id:integer
-jruby script\generate scaffold Breed name:string subtype:string
-
+ruby script\generate scaffold Pet veterinar:string referred_by:string medical_problems:text breed:string size:string name:string sex:string color:string birth_date:datetime clip1:string clip2:string clip3:string special_instructions:text behavior:text
+ruby script\generate scaffold PetOwner first_name:string last_name:string home_phone:string work_phone:string cell_phone:string salutation:string
+ruby script\generate scaffold Appointment appointment_date:datetime price:string
+ruby script\generate scaffold Report name:string description:string table:string condition:string
+ruby script\generate scaffold User name:string password:string admin:boolean company_id:integer
+ruby script\generate scaffold Breed name:string subtype:string
 
 7.
 
@@ -65,23 +64,23 @@ set RAILS_ENV=production
 set RAILS_ENV=test
 set RAILS_ENV=development
 
-jrake db:drop:all 
-jrake db:create:all 
-jrake db:migrate 
-jrake test
+rake db:drop:all 
+rake db:create:all 
+rake db:migrate 
+rake test
  rake db:test:prepare   
 
-jrake db:version
+rake db:version
 
 
 8. Open your browser to 
 
 http://localhost:3000/cats
 
-jruby script/generate migration add_pet_owner_id_to_pets
+ruby script/generate migration add_pet_owner_id_to_pets
 
 9.
-jruby script/console
+ruby script/console
 
 10.
 rake db:test:prepare   
@@ -102,7 +101,7 @@ rake db:test:prepare
 
 12.
 autocomplete:
-jruby script/plugin install auto_complete
+ruby script/plugin install auto_complete
 script/plugin install http://svn.rubyonrails.org/rails/plugins/auto_complete
 
 annotate:
@@ -149,7 +148,7 @@ ruby script/plugin install svn://rubyforge.org/var/svn/geokit/trunk
 
 15.
 
-jruby -S gem install activerecord-jdbcderby-adapter
+ruby -S gem install activerecord-jdbcderby-adapter
 
 16.
 rake db:dataset:dump_fixtures DATASET=demo
