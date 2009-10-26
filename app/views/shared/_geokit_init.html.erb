@@ -5,10 +5,12 @@
 <%
   coordinates = list.collect do | item |
     coordinate_struct = Struct::new(:name, :address, :lat, :lng)
-    
-    location = GeoKit::Geocoders::GoogleGeocoder.geocode(item.address)
 
-    coordinate_struct.new(item.name, item.address, location.lat, location.lng) if location.success
+    unless item.address.blank?
+      location = GeoKit::Geocoders::GoogleGeocoder.geocode(item.address)
+
+      coordinate_struct.new(item.name, item.address, location.lat, location.lng) if location.success
+    end
   end
 %>
 
