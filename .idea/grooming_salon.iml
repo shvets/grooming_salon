@@ -35,6 +35,12 @@
       <source from="vendor/plugins/will_paginate/test/boot.rb" />
       <source from="config/boot.rb" />
     </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="will_paginate" version="2.3.11" bound="LATEST_IN_BRANCH" url="http://gemcutter.org" />
+      </requirement>
+      <source from="config/environment.rb" />
+    </requirement>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
@@ -52,6 +58,8 @@
     <orderEntry type="library" name="[gem] activerecord (v2.3.4, /Users/oshvets/.rvm/gems/ruby/1.8.7/gems/activerecord-2.3.4)" level="application" />
     <orderEntry type="library" name="[gem] rake (v0.8.7, /Users/oshvets/.rvm/gems/ruby/1.8.7/gems/rake-0.8.7)" level="application" />
     <orderEntry type="library" name="[gem] mysql (v2.8.1, /Users/oshvets/.rvm/gems/ruby/1.8.7/gems/mysql-2.8.1)" level="application" />
+    <orderEntry type="library" name="[gem] will_paginate (v2.3.11, /Users/oshvets/.rvm/gems/ruby/1.8.7/gems/will_paginate-2.3.11)" level="application" />
+    <orderEntry type="library" name="[gem] geokit (v1.5.0, /Users/oshvets/.rvm/gems/ruby/1.8.7/gems/geokit-1.5.0)" level="application" />
   </component>
 </module>
 
