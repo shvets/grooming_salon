@@ -1,2 +1,2 @@
-require 'geokit'
-require 'geokit-rails'
+# require 'geokit'
+# require 'geokit-rails'

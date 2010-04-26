@@ -19,7 +19,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :report_engines
 
-  map.resources :test
+  #map.resources :test
+  
+  map.sitemap 'sitemap.xml', :controller => 'sitemap'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
