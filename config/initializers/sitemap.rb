@@ -1,4 +1,4 @@
-Sitemap::Routes.host = 'http://yoursite.com'
+Sitemap::Routes.host = 'http://grooming-salon.heroku.com'
 Sitemap::Routes.priority = 0.8    # default is 1.0
 
 Sitemap::Routes.draw  do |map|
