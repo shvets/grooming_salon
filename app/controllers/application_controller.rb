@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   #:secret => 'f599262b5622ea5038a3a07071187bd0'
 
   # Pick a unique cookie name to distinguish our session data from others'
-  session :session_key => '_grooming_salon_session'
-  
-  # See ActionController::Base for details 
+  #session :session_key => '_grooming_salon_session'
+
+  # See ActionController::Base for details
   # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
+  # from your application log (in this case, all fields with names like "password").
   # filter_parameter_logging :password
 
   # Pick a unique cookie name to distinguish our session data from others'
@@ -29,12 +29,12 @@ class ApplicationController < ActionController::Base
 #    return if session[:user]
 #      if cookies[:userapp_login]
 #        @user = User.find_by_username(cookies[:userapp_login])
-#        return unless @user 
+#        return unless @user
 #        cookie_hash = Digest::MD5.hexdigest(cookies[:userapp_login_pass] + @user.password_salt)
 #        if @user.cookie_hash == cookie_hash
 #          flash[:info] = 'You\'ve been automatically logged in' # annoying msg
 #          session[:user] = @user.id
-#        else 
+#        else
 #          flash[:notice] = 'Something is wrong with your cookie'
 #        end
 #      end
@@ -49,8 +49,8 @@ class ApplicationController < ActionController::Base
 
   if RAILS_ENV == 'developpment'
     def method_missing name, *args
-      render :inline => %{ 
-        <h2>Unknown action: #{name}</h2> 
+      render :inline => %{
+        <h2>Unknown action: #{name}</h2>
         Query parameters: <br>
         <%= debug(params) %>
       }

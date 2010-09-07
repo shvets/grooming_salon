@@ -26,7 +26,7 @@ class UsersControllerTest < ActionController::TestCase
   def test_login
     user = users(:one)
     post :login, :name => one.username, :password => 'secret'
-    assert_redirected_to :action => "index'
+    assert_redirected_to :action => 'index'
     assert_equal one.id, session[:user]
   end
 

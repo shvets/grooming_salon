@@ -3,7 +3,7 @@
 
 function checkPresence(field) {
  var hint = $F(field).length == 0 ? " This field cannot be empty!" : "";
- 
+
  if ($(field + '_hint')) {
    $(field + '_hint').update(hint);
  }
